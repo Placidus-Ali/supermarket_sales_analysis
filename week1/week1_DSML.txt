@@ -1,0 +1,68 @@
+1. The Three Pillars of Machine Learning
+Machine learning is a subset of AI that teaches the machine how to learn and act like human.
+
+Supervised Learning: The model learns from labeled data.
+
+Classification: Predicts discrete categories (e.g., "Spam" vs. "Not Spam"). 
+It can be Binary (two classes) or Multi-class (more than two).
+
+Regression: Predicts continuous, numerical values (e.g., predicting a house price).
+
+Unsupervised Learning: The model works with unlabeled data to find hidden patterns or structures.
+
+Clustering: Grouping data by similarity (e.g., segmenting customers by age and income).
+
+Reinforcement Learning (RL): An agent learns by trial and error within an environment. 
+It uses a feedback loop of Rewards (positive) and Punishments (negative) to maximize 
+long-term success. Key concepts include Exploration (trying new things) and 
+Exploitation (using known successful strategies).
+
+Model Performance and FittingThe guide explains how to tell if a model is actually 
+"learning" or just memorizing:
+
+Underfitting: The model is too simple to capture the underlying data trend.
+E.g: Imagine a model designed to detect if a patient has a specific flu. 
+If the model only checks for a fever, it is underfitting. While many flu patients 
+have fevers, many other illnesses also cause fevers, and some flu cases don't have them 
+at all.
+
+Overfitting: The model is too complex and "memorizes" the noise in the training data, 
+leading to poor performance on new data.
+E.g: Think of overfitting like a student who memorizes every single answer to a 
+specific practice exam but doesn't actually understand the subject. When they take the 
+real test with slightly different questions, they fail because they only knew the "noise" 
+(the specific wording of the practice questions) rather than the "signal" 
+(the actual math or logic).
+
+Right Fit: Is where the model generalizes well to new, unseen information. 
+It learns well and performs well.
+
+Data Splitting: To validate models, raw data is typically split into a Training set 
+(to build the model) and a Test set (to validate it). Common ratios are 80:20 or 70:30.
+
+Deep Dive into AlgorithmsThe document explains the mechanics (math and logic) behind 
+popular algorithms:
+
+Linear Regression (Supervised)
+Models a linear relationship between input and output using the formula:$$y = b + mx$$To 
+find the best-fitting line, it minimizes the Mean Squared Error (MSE) using a technique 
+called Gradient Descent.
+
+Logistic Regression (Supervised)
+Despite the name, this is used for Classification. It uses a Sigmoid Function to squeeze 
+output values between 0 and 1, representing the probability of a class.
+
+Decision Trees (Supervised)
+A non-mathematical, logic-based approach that splits data into branches based on feature 
+values until it reaches a "Leaf Node" (final decision).Criteria: Splits are determined by 
+metrics like Gini Impurity or Entropy to ensure groups become more "pure.
+
+"K-Means Clustering (Unsupervised)
+An iterative algorithm that groups data into $K$ clusters. It calculates a Centroid 
+(the average center of a cluster) and assigns data points to the nearest one, 
+aiming to minimize the distance between points and their respective centroids.
+
+Machine Learning in Python
+1. Scikit-learn (sklearn) as the premier library for building ML models.  
+2. NumPy/Pandas For data reading and manipulation.
+3. Matplotlib/Seaborn for visualization.

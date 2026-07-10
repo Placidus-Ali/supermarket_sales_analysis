@@ -1,0 +1,164 @@
+Statistical Analysis Foundations
+
+Statistical analysis is the bedrock of decision-making. It is categorized by the number 
+of variables involved and the assumptions made about the data.
+
+Analysis Types:
+Univariate: Focuses on one variable (e.g., Mean, Median, Histograms) to understand 
+distribution.
+
+Multivariate: Explores relationships between multiple variables (e.g., Correlation, 
+Heatmaps).
+
+Test Categories:
+Parametric: Requires data to follow a specific distribution (usually Normal).
+
+Non-Parametric: Used when data is skewed or doesn't meet strict distributional assumptions.
+
+Data Distribution: 
+
+Understanding the "shape" of your data (Normal vs. Skewed) is critical for selecting the 
+right model and detecting outliers.
+
+Key Metric: (Coefficient of Determination) tells you what percentage of the variance is 
+explained by your model.
+
+Logistic Regression: Used when the output is categorical (e.g., Yes/No, Success/Failure).
+
+Binary: Two outcomes.
+
+Multinomial: More than two discrete outcomes.
+
+Ordinal: Outcomes with a natural order (e.g., Poor, Good, Excellent).
+
+
+3. Time Series Analysis
+This involves analyzing data points collected sequentially over time to forecast future 
+trends.Components:Trend: The long-term upward or downward direction.
+
+Seasonality: Repeating patterns at fixed intervals (e.g., holiday spikes).
+Cyclic: Fluctuations not tied to a fixed period (e.g., economic cycles).
+ARIMA Model: A popular forecasting method consisting of Autoregressive (p), Integration (d), 
+and Moving Average (q) components.
+
+4. Hypothesis Testing
+A formal process to determine if there is enough evidence in a sample to support a claim 
+about a population.
+The Logic: You compare a Null Hypothesis — the "no effect" status quo—against an 
+Alternative Hypothesis.
+
+The Decision: If the p-value is $\leq 0.05$ (the typical significance level $\alpha$), 
+you reject the Null Hypothesis.
+
+Common Hypothesis Tests
+Test Use CaseT-testCompares the means of two groups.
+
+ANOVA
+Compares the means of three or more groups.
+
+Chi-Square
+Determines if two categorical variables are related (using a contingency table).
+
+
+Cluster Analysis
+Clustering is the process of grouping data points so that objects in the same group 
+(cluster) are more similar to each other than to those in other groups.
+
+Key Concepts:
+Centroid: The mathematical center of a cluster.
+Distance Metrics: Formulas like Euclidean or Manhattan distance used to calculate how 
+"close" points are to each other.
+
+Types of Clustering:
+Partition-Based (K-Means): Divides data into non-overlapping groups. 
+It is iterative: assign points rightarrow$ update centroids $\rightarrow$ repeat.
+
+Hierarchical: Creates a tree-like structure (Dendrogram).
+
+Density-Based (DBSCAN): Groups points based on how "crowded" an area is; excellent for 
+finding outliers.
+
+Evaluation: 
+
+Score: Measures how well a point fits its cluster compared to others.
+
+Rand Index: Compares results against a "ground truth" if available.
+
+2. Dimensionality ReductionT
+his is the process of reducing the number of input variables (features) in a dataset. It 
+is essential for combating the "Curse of Dimensionality," which can cause models to 
+overfit or run slowly.
+
+Why Reduce Dimensions?
+Performance: Faster training and less computational cost.
+Visualization: Compresses 100+ variables into 2D or 3D so humans can plot and see patterns.
+Noise Reduction: Removes redundant or irrelevant "junk" data.
+
+Principal Component Analysis (PCA)
+PCA is the most popular linear method for dimensionality reduction. It transforms many 
+correlated variables into a smaller number of uncorrelated variables called Principal 
+Components.
+
+The PCA Process:
+Standardize: Scale data so all features contribute equally.Covariance Matrix: Calculate 
+how variables move together.
+Eigenvalues/vectors: Identify the directions (vectors) that hold the most "information" 
+(variance).
+
+Project: Transform the original data onto these new axes.
+
+
+Anomaly Detection (Outlier Detection)
+Anomaly detection is the process of finding data points that deviate significantly from 
+"normal" behavior.
+
+Core ConceptsOutliers: Extreme values that exist in your current dataset 
+(e.g., a $40$°C day in a typically $25$°C climate).
+Novelties: New, unseen patterns that appear in fresh data (e.g., a new sensor 
+consistently recording higher values).
+
+Univariate vs. Multivariate: 
+
+Univariate: An outlier in one variable (e.g., a house price of $10M).
+Multivariate: A combination of variables that is unusual (e.g., a 1-bedroom house that 
+costs $10M).
+
+Statistical Techniques
+Z-Score: Measures how many standard deviations a point is from the mean.
+Formula:$$z = \frac{x - \mu}{\sigma}$$Threshold: Generally, a Z-score greater than 3 is 
+considered an outlier.
+
+Interquartile Range (IQR): Measures the spread of the middle 50% of the data.
+
+Formula: IQR = Q3 - Q1
+
+Outlier Bounds: Any value outside $[Q1 - 1.5 \times IQR]$ or $[Q3 + 1.5 \times IQR]$.
+
+Boxplots: A visual summary of the "Five-Number Summary" (Min, Q1, Median, Q3, Max). 
+
+Dots outside the "whiskers" are visual representations of outliers.
+
+2. Machine Learning for Anomalies
+When statistical methods aren't enough, we use algorithms:
+
+K-Nearest Neighbors (KNN): Points far away from their neighbors are flagged.
+
+DBSCAN: Clusters dense data; points in low-density "empty" spaces are considered noise/anomalies.
+
+Isolation Forest: Randomly partitions data; anomalies are easier to "isolate" (require 
+fewer splits) than normal points.
+
+3. Forecasting Techniques
+Forecasting uses historical data to predict future trends. This is the "planning" stage of 
+data analysis.
+
+MethodHow it Works Best For...Straight-Line
+Assumes a constant growth rate based on the past.
+
+Simple revenue projections.
+
+Moving Average
+Averages the last 'X' periods to smooth out noise.
+Short-term inventory or sales.
+Simple Linear Regression
+Uses one independent variable to predict a result.Basic "If X happens, Y will be..." scenarios.Multiple RegressionUses many variables (e.g., price, weather, ads) to predict sales.Complex business forecasting.
