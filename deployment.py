@@ -19,23 +19,18 @@ image = Image.open(image_path)
 print("Image Loaded Successfully")
 
 # Mapping the encoded columns
-Branch = {0: "Alex", 1: "Cairo", 2: "Giza"}   
-City =  {0: "Mandalay", 1: "Naypyitaw", 2: "Yangon"}  
-Customer_type =  {0: "Member", 1: "Normal"}    
-Gender =  {0: "Female", 1: "Male"}  
-Product_line = {0: "Electronic Accessories", 1: "Fashion Accessories", 2: "Food and Beverages", 3: "Health and Beauty", 4: "Home and Lifestyle", 5: "Sports and Travel"}  
-Payment =  {0: "Cash", 1: "Credit Card", 2: "Ewallet"}
+branch_lookup = {0: "Alex", 1: "Cairo", 2: "Giza"}   
+city_lookup =  {0: "Mandalay", 1: "Naypyitaw", 2: "Yangon"}  
+customer_type_lookup =  {0: "Member", 1: "Normal"}    
+gender_lookup =  {0: "Female", 1: "Male"}  
+product_line_lookup = {0: "Electronic Accessories", 1: "Fashion Accessories", 2: "Food and Beverages", 3: "Health and Beauty", 4: "Home and Lifestyle", 5: "Sports and Travel"}  
+payment_lookup =  {0: "Cash", 1: "Credit Card", 2: "Ewallet"}
 
-
-
-
-# 5. CREATE THE USER INTERFACE (UI)
-st.title("📈 Store Sales Predictor")
+# Creating user interface
+st.title("Store Sales Model")
 st.image(image)
 st.write("Enter the store details below to predict the sales revenue:")
-
-
-												
+										
 # Documentation dropdown
 with st.expander("Documentation: Feature Descriptions"):
     st.write("**Branch**: The branch location of the supermarket (e.g., Yangon, Naypyitaw, Mandalay)")
@@ -52,39 +47,37 @@ with st.expander("Documentation: Feature Descriptions"):
     st.write("**Month**: The month when the transaction happened")
     st.write("**Sales**: The total sales per transaction which is the target variable")
 
-# 6. COLLECT USER INPUTS
-Branch =  st.selectbox("Branch", options=[0, 1, 2], format_func=lambda x: Branch[x])
-City = st.selectbox("City", options=[0, 1, 2], format_func=lambda x: City[x])
-Customer_Type = st.selectbox("Customer Type", options=[0, 1], format_func=lambda x: Customer_type[x])
-Gender = st.selectbox("Gender", options=[0, 1], format_func=lambda x: Gender[x])
-Product_Line = st.selectbox("Product Line", options=[0, 1, 2, 3, 4, 5], format_func=lambda x: Product_line[x])
-Unit_Price = st.number_input("Unit Price", min_value=10.00, max_value=100.00, value=10.00, step=0.01) 
+# Collect user input
+Branch =  st.selectbox("Branch", options=[0, 1, 2], format_func=lambda x: branch_lookup[x])
+City = st.selectbox("City", options=[0, 1, 2], format_func=lambda x: city_lookup[x])
+Customer_type = st.selectbox("Customer Type", options=[0, 1], format_func=lambda x: customer_type_lookup[x])
+Gender = st.selectbox("Gender", options=[0, 1], format_func=lambda x: gender_lookup[x])
+Product_line = st.selectbox("Product Line", options=[0, 1, 2, 3, 4, 5], format_func=lambda x: product_line_lookup[x])
+Unit_price = st.number_input("Unit Price", min_value=10.00, max_value=100.00, value=10.00, step=0.01) 
 Quantity = st.number_input("Quantity", min_value=1, max_value=10, value=1, step=1) 
-Payment = st.selectbox("Payment", options=[0, 1, 2, 3, 4, 5], format_func=lambda x: Product_line[x])
+Payment = st.selectbox("Payment", options=[0, 1, 2], format_func=lambda x: payment_lookup[x])
 Rating = st.number_input("Rating", min_value=4.0, max_value=10.0, value=4.0, step=0.1) 
 Hour = st.number_input("Hour", min_value=10, max_value=20, value=10, step=1) 
 DayOfWeek = st.number_input("Day Of Week", min_value=0, max_value=6, value=0, step=1) 
 Month = st.number_input("Month", min_value=1, max_value=3, value=1, step=1) 
-
-
 print('Input Features Collected')
 
-# 7. PREDICTION LOGIC
+# Making Prediction
 if st.button("Predict Total Sales"):
     
     # Organize inputs into a pandas DataFrame 
     input_data = pd.DataFrame(
-        [[Branch, City, Customer_Type, Gender, Product_line, Unit_Price, Quantity, Payment, Rating, Hour, DayOfWeek, Month]],
-        columns=["Branch", "City", "Customer_Type", "Gender", "Product_Line", "Unit_Price", "Quantity", "Payment", "Rating", "Hour", "DayOfWeek", "Month"]
+        [[Branch, City, Customer_type, Gender, Product_line, Unit_price, Quantity, Payment, Rating, Hour, DayOfWeek, Month]],
+        columns=["Branch", "City", "Customer type", "Gender", "Product line", "Unit price", "Quantity", "Payment", "Rating", "Hour", "DayOfWeek", "Month"]
     )
     
     prediction = model.predict(input_data)[0]
     
-    # 8. DISPLAY RESULTS
+    # Show Result
     st.markdown("---")
     st.success(f"💰 Predicted Sales: **${prediction:,.2f}**")
     
-    # Provide a simple business context summary based on the prediction
+    # Provide a simple business summary based on the prediction
     if prediction > 15000:
         st.info("📊 **Sales Status:** High-performing day expected! Check inventory levels.")
     elif prediction > 5000:
@@ -92,4 +85,4 @@ if st.button("Predict Total Sales"):
     else:
         st.info("📊 **Sales Status:** Low sales volume projected. Consider launching a flash sale.")
 
-    print('Sales Prediction Completed Successfully')
+print('Sales Prediction Completed Successfully')
