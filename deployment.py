@@ -75,14 +75,14 @@ if st.button("Predict Total Sales"):
     
     # Show Result
     st.markdown("---")
-    st.success(f"💰 Predicted Sales: **${prediction:,.2f}**")
+    st.success(f"Predicted Sales: **${prediction:,.2f}**")
     
     # Provide a simple business summary based on the prediction
     if prediction > 15000:
-        st.info("📊 **Sales Status:** High-performing day expected! Check inventory levels.")
+        st.info("**Sales Status:** High-performing day expected! Check inventory levels.")
     elif prediction > 5000:
-        st.info("📊 **Sales Status:** Average/Stable performance expected.")
+        st.info("**Sales Status:** Average performance expected.")
     else:
-        st.info("📊 **Sales Status:** Low sales volume projected. Consider launching a flash sale.")
+        st.info("**Sales Status:** Low sales volume projected. Consider launching a flash sale.")
 
 print('Sales Prediction Completed Successfully')
